@@ -1,28 +1,51 @@
-form{
-    background:linear-gradient(rgb(212, 244, 212), rgb(46, 240, 250));
-}
+
 body{
-    background:linear-gradient(rgb(212, 244, 212), rgb(46, 240, 250));
+    /*background:linear-gradient(rgb(212, 244, 212), rgb(46, 240, 250));*/
+    background-image: linear-gradient(rgba(140, 140, 140, 0), rgba(83, 83, 83, 0.661)), url(mekanik.jpeg);
+    background-repeat: no-repeat;
     padding-left: 25%;
     padding-top: 5%;    
-    padding-bottom: 40%;
+    padding-bottom: 5%;
+}
+.background-section{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(112, 112, 112, 0.5)), url(mekanik.jpeg); /* Specify the image path */ 
+    background-size: cover;              /* Scale the image to cover the entire container */
+   
 }
 button{
 
-    background-color: rgb(230, 240, 255);
+    background-color: transparent;
+    color:rgb(161, 161, 161);
     border-radius: 8px;
     font-size: 24px;
     margin-left: 15px;
-    
+}   
+button[id="Intervale"]
+{
+    color:blue;
 }
 button:hover{
     transition: linear;
-    background-color: aqua;
+    background-color: rgba(212, 212, 212, 0.1);
 }
 h1{
-    margin-left: 28%;
+    margin-left: -30%;
+    font-family: "Anton SC", sans-serif;
+    font-weight: bold;
+
+    color: azure;
 }
+
 p{
     font-size: 25px;
     font-family: 'Courier New', Courier, monospace;
+    color: aliceblue;
+    padding-top: 50%;
 }
+
+.anton-sc-regular {
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
