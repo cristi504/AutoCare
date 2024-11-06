@@ -1,0 +1,28 @@
+form{
+    background:linear-gradient(rgb(212, 244, 212), rgb(46, 240, 250));
+}
+body{
+    background:linear-gradient(rgb(212, 244, 212), rgb(46, 240, 250));
+    padding-left: 25%;
+    padding-top: 5%;    
+    padding-bottom: 40%;
+}
+button{
+
+    background-color: rgb(230, 240, 255);
+    border-radius: 8px;
+    font-size: 24px;
+    margin-left: 15px;
+    
+}
+button:hover{
+    transition: linear;
+    background-color: aqua;
+}
+h1{
+    margin-left: 28%;
+}
+p{
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+}
