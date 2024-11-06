@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="/static/log.css">
+</head>
+<body>
+    <div class="container form-container">
+        <header>
+            <h1>AutoCare Log In</h1>
+        </header>
+        <div class="form-content">
+            <form action="/login" method="post">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Parola:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Conectează-te</button>
+                <p>Nu ai cont? <a href="signup.html">Înregistrează-te aici</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

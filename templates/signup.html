@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/static/log.css">
+</head>
+<body>
+    <div class="container form-container">
+        <header>
+            <h1>AutoCare Sign Up</h1>
+        </header>
+        <div class="form-content">
+            <form action="/signup" method="post">
+                <label for="name">Nume:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Parola:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="confirm-password">Confirmă Parola:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+
+                <button type="submit">Înregistrează-te</button>
+                <p>Ai deja un cont? <a href="login.html">Conectează-te aici</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
