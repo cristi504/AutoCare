@@ -27,13 +27,13 @@ header {
 
 header h1 {
     font-size: 2em;
-    color: #00a8a8;
+    color: #089c92;
     margin-bottom: 10px;
 }
 
 header p {
     font-size: 1.1em;
-    color: #666;
+    color: #089c92;
 }
 
 section {
@@ -44,7 +44,7 @@ section {
 section h2 {
     font-size: 1.5em;
     color: #007575;
-    border-bottom: 2px solid #00a8a8;
+    border-bottom: 2px solid #099fa186;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
