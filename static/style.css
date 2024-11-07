@@ -41,7 +41,7 @@ body::before {
     position: absolute;
     left: 45.5%;
     top: 1%;
-    margin-right: 39%;
+    right: 39%;
 }
 
 header {
