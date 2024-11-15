@@ -1,14 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import  Hello from './hello';
-import Poza from './poza';
-function App() {
+import React from "react";
+import Header from "./Header";
+import MainGrid from "./MainGrid";
+
+const App = () => {
   return (
-    <div className="App">
-      <Hello />
-      <Poza/>
+    <div className="container">
+      <Header />
+      <MainGrid />
     </div>
   );
-}
+};
 
 export default App;
