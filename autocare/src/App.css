@@ -95,8 +95,9 @@ header h1 {
 }
 
 .header-icon {
+  animation :rotateLogo 4s linear infinite;
   position: absolute;
-  left: 50%;
+  left: 46%;
   top: 1px;
   transform: translateX(-50%);
   width: 125px;
@@ -134,8 +135,9 @@ header nav a:hover {
 
 .main-grid button {
   background-color: transparent;
-  border: 2px solid #00d0c7;
-  color: #00d0c7;
+  border: 2px solid #e7fffe;
+  color: #ffffff;
+  border-radius: 10px;
   font-size: 1.2em;
   padding: 15px 20px;
   width: 100%;
@@ -145,7 +147,7 @@ header nav a:hover {
 }
 
 .main-grid button:hover {
-  background-color: rgba(0, 208, 199, 0.2);
+  background-color: rgba(255, 255, 255, 0.469);
   color: white;
 }
 
@@ -206,7 +208,7 @@ header nav a:hover {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  border: 3px solid #00d0c7;
+  border: 3px solid #ffffff;
   transition: transform 0.3s;
   display: block;
 }
@@ -226,4 +228,12 @@ header nav a:hover {
   background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   padding: 3% 20%;
   border-radius: 15px;
+}
+@keyframes rotateLogo {
+  from {
+      transform: rotateY(0deg);
+  }
+  to {
+      transform: rotateY(360deg);
+  }
 }
