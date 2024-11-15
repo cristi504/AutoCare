@@ -1,25 +1,14 @@
-import React from 'react';
-import './App.css';
-import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
-import UserCard from './UserCard';
-import HomePage from './HomePage';
-import AboutUs from './AboutUs';
-import OurTeam from './OurTeam';
-function App() {
+import React from "react";
+import Header from "./Header";
+import MainGrid from "./MainGrid";
 
-    return(
-    
-      <Router>
-        <Routes>
-          <Route path ="/home" element= {<HomePage></HomePage>}></Route>
-          <Route path ="/about" element = {<AboutUs></AboutUs>}></Route>
-        </Routes> 
-      </Router>
-    
-    )
-  
-
-
-}
+const App = () => {
+  return (
+    <div className="container">
+      <Header />
+      <MainGrid />
+    </div>
+  );
+};
 
 export default App;
