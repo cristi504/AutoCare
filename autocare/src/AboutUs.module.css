@@ -1,0 +1,14 @@
+.card{
+    border: 1px solid black;
+    background-image: linear-gradient(to right ,rgb(116, 249, 229),rgb(255, 255, 255));
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    /*align-items: center; /* Centers vertically */
+}
+.logo{
+    width: auto;
+    height: 150px;
+}
+.links{
+    padding-left: 5 px;
+}

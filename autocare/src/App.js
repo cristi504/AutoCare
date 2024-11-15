@@ -1,14 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import  Hello from './hello';
-import Poza from './poza';
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import UserCard from './UserCard';
+import HomePage from './HomePage';
+import AboutUs from './AboutUs';
+import OurTeam from './OurTeam';
 function App() {
-  return (
-    <div className="App">
-      <Hello />
-      <Poza/>
-    </div>
-  );
+
+    return(
+    
+      <Router>
+        <Routes>
+          <Route path ="/home" element= {<HomePage></HomePage>}></Route>
+          <Route path ="/about" element = {<AboutUs></AboutUs>}></Route>
+        </Routes> 
+      </Router>
+    
+    )
+  
+
+
 }
 
 export default App;
