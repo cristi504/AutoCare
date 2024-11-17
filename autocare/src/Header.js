@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./App.css"; // Import your CSS file
 
 const Header = () => {
@@ -7,8 +8,8 @@ const Header = () => {
       <h1>AutoCare</h1>
       <img src="/static/icon.jpg" alt="AutoCare Icon" className="header-icon" />
       <nav>
-        <a href="signup.html">Sign Up</a>
-        <a href="login.html">Log In</a>
+        <Link to="/signup">Sign Up</Link>
+        <Link to="/login">Log In</Link>
       </nav>
     </header>
   );

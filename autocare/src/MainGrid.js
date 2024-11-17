@@ -1,12 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const MainGrid = () => {
+  const navigate = useNavigate();
   return (
     <div className="main-grid">
-      <button>INTERVALE SERVICE</button>
-      <button>DOCUMENTE</button>
-      <button>INTRETINERE PREVENTIVA</button>
-      <button>PROBLEME TEHNICE</button>
+      <button onClick={() => navigate("/service-intervals")}>INTERVALE SERVICE</button>
+      <button onClick={() => navigate("/documents")}>DOCUMENTE</button>
+      <button onClick={() => navigate("/preventive-maintenance")}>INTRETINERE PREVENTIVA</button>
+      <button onClick={() => navigate("/technical-issues")}>PROBLEME TEHNICE</button>
 
       <div className="photo-wrapper left-photo">
         <a href="left-page.html">
@@ -22,8 +24,8 @@ const MainGrid = () => {
         </a>
       </div>
 
-      <button className="row-span">STATUS GENERAL</button>
-      <button className="row-span">AI O PROBLEMA?</button>
+      <button className="row-span" onClick={() => navigate("/general-status")}>STATUS GENERAL</button>
+      <button className="row-span" onClick={() => navigate("/problem")}>AI O PROBLEMA?</button>
     </div>
   );
 };
