@@ -240,20 +240,28 @@ header nav a:hover {
 }
 
 form {
-  margin: 50px auto;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #00d0c7;
-  border-radius: 10px;
-  max-width: 400px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 50px;
+  border-radius: 10px;
+  max-width: 900px; /* Match the width of .page-container */
+  margin: 100px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  color: #00d0c7;
+}
+
+form h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
 }
 
 form label {
-  margin-bottom: 15px;
-  
-  font-size: 1em;
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }
 
 form input {
@@ -264,11 +272,13 @@ form input {
   border-radius: 5px;
   background: transparent;
   color: white;
+  width: 100%; /* To make inputs span full width */
+  max-width: 400px;
 }
 
 form button {
   margin-top: 20px;
-  padding: 10px;
+  padding: 10px 20px;
   font-size: 1.2em;
   border: none;
   border-radius: 5px;
