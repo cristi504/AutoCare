@@ -1,10 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const LeftPhoto = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="page-container">
-      <h1>Documente Necesare</h1>
-      <p>This page is under construction.</p>
+    <div className="photo-wrapper left-photo">
+      <a onClick={() => navigate("/left-photo")}>
+        <img src="/static/left-image.jpg" alt="Left Image" />
+        <span className="overlay-text">Documente necesare.</span>
+      </a>
     </div>
   );
 };

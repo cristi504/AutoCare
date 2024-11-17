@@ -10,6 +10,9 @@ import PreventiveMaintenance from "./PreventiveMaintenance";
 import TechnicalIssues from "./TechnicalIssues";
 import GeneralStatus from "./GeneralStatus";
 import Problem from "./Problem";
+import LeftPage from "./LeftPhotoPage";
+import RightPage from "./RightPhotoPage";
+
 
 const App = () => {
   return (
@@ -21,6 +24,8 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/" element={<MainGrid />} />
+          <Route path="/left-photo" element={<LeftPage />} />
+          <Route path="/right-photo" element={<RightPage />} />
           <Route path="/service-intervals" element={<ServiceIntervals />} />
           <Route path="/documents" element={<Documents />} />
           <Route path="/preventive-maintenance" element={<PreventiveMaintenance />} />
