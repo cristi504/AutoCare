@@ -8,7 +8,7 @@ const RightPhoto = () => {
     <div className="photo-wrapper right-photo">
       <a onClick={() => navigate("/right-photo")}>
         <img src="/static/right-image.jpg" alt="Right Image" />
-        <span className="overlay-text">Martorii din Bord.</span>
+        <span className="overlay-text">Martorii din Bord</span>
       </a>
     </div>
   );
