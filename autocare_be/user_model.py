@@ -5,6 +5,37 @@ class UserModel:
     def __init__(self, db):
         self.collection = db['users']  # Replace with your users collection name
 
+    def add_car(self, user_id, brand, model, year, carID):
+        """Add a car to a user's account."""
+        car = {"carID":carID, "brand": brand, "model": model, "year": year, "services": []}
+        result = self.collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$push": {"cars": car}}
+        )
+        if result.matched_count == 0:
+            raise ValueError("User not found")
+        return "Car added successfully"
+    
+    def add_service(self, user_id, car_index, date,km,service, description):
+        """Add a service entry to a car."""
+        service = {"date": date,"km":km, "service":service, "description": description}
+        query = {
+            "_id": ObjectId(user_id),
+            f"cars.{car_index}": {"$exists": True}
+        }
+        update = {"$push": {f"cars.{car_index}.services": service}}
+        result = self.collection.update_one(query, update)
+        if result.matched_count == 0:
+            raise ValueError("User or car not found")
+        return "Service added successfully"
+    
+    def get_user_with_cars(self, user_id):
+        """Retrieve a user with their cars and services."""
+        user = self.collection.find_one({"_id": ObjectId(user_id)})
+        if not user:
+            raise ValueError("User not found")
+        return user
+
     def create_user(self, email, password):
         """Create a new user with a hashed password."""
         if self.collection.find_one({"email": email}):

@@ -1,5 +1,6 @@
 import React ,{useState} from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
+import './signup.css';
 
 const SignUp = () => {
  
@@ -20,9 +21,10 @@ const SignUp = () => {
         const data  = await response.json();
         if (response.ok) {
           alert('Sign-up successful. Please sign in.');
-          navigate('/signin');}
+          navigate('/login');}
           else {
             setError(data.error || 'Sign-up failed.');  
+            alert(error)
         }
     }
     catch(err){
@@ -37,8 +39,21 @@ const SignUp = () => {
         <label>Password: <input  type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required/> </label>
         <button type="submit" >Sign Up</button>
       </form>
+      <p style={styles.p}>  
+        Already have an account?{' '}
+       <Link to="/login" style={styles.link}>Sign in here</Link>
+      </p>
     </div>
   );
 };
-
+const styles = {
+  p:{
+    textAlign: 'center',
+    color : 'white',
+    fontSize: '20px'
+  },
+  link :{
+    color :'#00d0c7'
+  },
+};
 export default SignUp; 

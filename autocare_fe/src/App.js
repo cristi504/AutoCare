@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, redirect,Navigate } from "react-router-dom";
 import Header from "./Header";
 import MainGrid from "./MainGrid";
 import SignUp from "./SignUp";
@@ -20,10 +20,10 @@ const App = () => {
       <div className="container">
         <Header />
         <Routes>
-          <Route path="/" element={<MainGrid />} />
+          <Route path="/" element={<Navigate to = "/login" replace/> } />
           <Route path="/signup" element={<SignUp />} />
+          <Route path ="/main" element={<MainGrid/>}/>
           <Route path="/login" element={<LogIn />} />
-          <Route path="/" element={<MainGrid />} />
           <Route path="/left-photo" element={<LeftPage />} />
           <Route path="/right-photo" element={<RightPage />} />
           <Route path="/service-intervals" element={<ServiceIntervals />} />
