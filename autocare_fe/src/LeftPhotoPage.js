@@ -11,7 +11,7 @@ const LeftPage = () => {
         Aici poți afla toate informațiile legate de documentele necesare pentru mecanic, ITP, și RAR. 
         Este important să ai aceste documente pregătite pentru a evita întârzierile.
       </p>
-      <button onClick={() => navigate("/")}>Înapoi la pagina principală</button>
+      <button onClick={() => navigate("/main")}>Înapoi la pagina principală</button>
     </div>
   );
 };

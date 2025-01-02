@@ -2,13 +2,14 @@ import React , {useState}  from "react";
 import { useNavigate } from "react-router-dom";
 import './statusgeneral.css';
 import { useEffect } from "react";
+import './generalStatus.css';
 
 const GeneralStatus = () => {
   const user_id = localStorage.getItem("user_id");
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-  const [newCar, setNewCar] = useState({ brand: "", model: "", year: "" });
-  const [error, setError] = useState('');
+  const [newCar, setNewCar] = useState({ brand: "", model: "", year: "" , vin:"" , enginecapacity: "", power:"" });
+  const [error, setError] = useState(''); 
   const [cars, setCars] = useState([
     { brand: " ", model: " ", year:'' , vin: " " }]);
  
@@ -37,16 +38,16 @@ const GeneralStatus = () => {
     setNewCar({ ...newCar, [name]: value });
   };
   const  handleAddCar = async () => {
-    if (newCar.brand && newCar.model && newCar.year) {
-      setCars([...cars, { ...newCar, vin: Date.now().toString() }]);
+    if (newCar.brand && newCar.model && newCar.year &&newCar.vin &&newCar.enginecapacity&&newCar.power) {
+      setCars([...cars, { ...newCar}]);
       setShowPopup(false);
-      await addCarHandler(newCar.brand,newCar.model,newCar.year)
-      setNewCar({ brand: "", model: "", year: "" }); // Reset the form
+      await addCarHandler(newCar.brand,newCar.model,newCar.year,newCar.vin,newCar.enginecapacity,newCar.power)
+      setNewCar({ brand: "", model: "", year: "" ,vin:"", enginecapacity:"" , power:""}); // Reset the form
     } else {
       alert("Please fill out all fields!");
     }
   };
-  const addCarHandler = async (brand,model,year) =>{
+  const addCarHandler = async (brand,model,year,vin,enginecapacity,power) =>{
     
     setError('');
 
@@ -55,13 +56,13 @@ const GeneralStatus = () => {
         const response = await fetch(`http://localhost:5000/users/${user_id}/cars`,{
           method :'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({brand,model,year}),
+          body: JSON.stringify({brand,model,year,vin,enginecapacity,power}),
         });
 
         const data=  await response.json();
         if(response.ok)
         {
-          alert("It s ok");
+          alert("Car added succesfully");
         }
         else{
           setError(data.error || 'add car Failed');
@@ -85,7 +86,7 @@ const GeneralStatus = () => {
   //   { brand: "Mercedes-Benz", model: "C-Class", year: 2023, vin: "WDDGF81X123456789" },
   // ];
   return (
-    <div className="container">
+    <div className="containers">
     <h1>Cars List</h1>
     <table>
       <thead>
@@ -94,6 +95,8 @@ const GeneralStatus = () => {
           <th>Model</th>
           <th>Year</th>
           <th>VIN</th>
+          <th>Engine Capacity</th>
+          <th>Power</th>
         </tr>
       </thead>
       <tbody>
@@ -103,11 +106,13 @@ const GeneralStatus = () => {
             <td>{car.model}</td>
             <td>{car.year}</td>
             <td>{car.vin}</td>
+            <td>{car.enginecapacity}</td>
+            <td>{car.power}</td>
           </tr>
         ))}
       </tbody>
     </table>
-    <button onClick={() => setShowPopup(true)}> Adauga masina  </button>
+    <button onClick={() => setShowPopup(true)}> Add Car</button>
     {showPopup && (
         <div className="popup">
           <div className="popup-content">
@@ -131,6 +136,27 @@ const GeneralStatus = () => {
               name="year"
               placeholder="Year"
               value={newCar.year}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="vin"
+              placeholder="VIN"
+              value={newCar.vin}
+              onChange={handleInputChange}
+            />
+             <input
+              type="number"
+              name="enginecapacity"
+              placeholder="Engine Capacity"
+              value={newCar.enginecapacity}
+              onChange={handleInputChange}
+            />
+             <input
+              type="number"
+              name="power"
+              placeholder="Power"
+              value={newCar.power}
               onChange={handleInputChange}
             />
             <button className="save-button" onClick={handleAddCar}>

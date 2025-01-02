@@ -15,8 +15,6 @@ def generate_random_string(length):
     characters = string.ascii_letters + string.digits  # Includes a-z, A-Z, and 0-9
     return ''.join(random.choices(characters, k=length))
 
-
-
 @app.route('/signup', methods=['POST'])
 def signup():
     try:
@@ -58,10 +56,13 @@ def add_car(user_id):
         brand = data['brand']
         model = data['model']
         year = data['year']
+        vin = data['vin']
+        enginecapacity = data['enginecapacity']
+        power = data['power']
         carID =generate_random_string(10)
 
         # Add car using UserModel
-        message = user_model.add_car(user_id, brand, model, year, carID)
+        message = user_model.add_car(user_id, brand, model, year,vin,enginecapacity,power, carID)
         return jsonify({"success": True, "message": message}), 201
 
     except ValueError as e:
@@ -70,8 +71,8 @@ def add_car(user_id):
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
-@app.route('/users/<user_id>/cars/<string:car_index>/services', methods=['POST'])
-def add_service(user_id, car_index):
+@app.route('/users/<user_id>/cars/<string:car_ID>/services', methods=['POST'])
+def add_service(user_id, car_ID):
     try:
         data = request.json
         date = data['date']
@@ -80,7 +81,7 @@ def add_service(user_id, car_index):
         description = data['description']
 
         # Add service entry using UserModel
-        message = user_model.add_service(user_id, car_index, date,km,service, description)
+        message = user_model.add_service(user_id, car_ID, date,km,service, description)
         return jsonify({"success": True, "message": message}), 201
 
     except ValueError as e:
@@ -119,5 +120,27 @@ def get_cars(user_id):
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
     
+@app.route('/users/<user_id>/documents', methods=['GET'])
+def fetch_user_documents(user_id):
+    try:
+        documents = user_model.get_user_documents(user_id)
+        return jsonify(documents), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/users/<user_id>/documents', methods=['POST'])
+def add_document(user_id):
+    try:
+        data = request.json
+        document = {
+            "type": data.get("type"),
+            "issue_date": data.get("issue_date"),
+            "expiry_date": data.get("expiry_date"),
+        }
+        user_model.add_user_document(user_id, document)
+        return jsonify({'message': 'Document added successfully'}), 201
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+   
 if __name__ == '__main__':
     app.run(debug=True)

@@ -8,7 +8,7 @@ const PreventiveMaintenance = () => {
     <div className="page-container">
       <h1>Preventive Maintenance</h1>
       <p>This page is under construction.</p>
-      <button onClick={() => navigate("/")}>Înapoi la pagina principală</button>
+      <button onClick={() => navigate("/main")}>Înapoi la pagina principală</button>
     </div>
   );
 };

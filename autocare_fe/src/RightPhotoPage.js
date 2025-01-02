@@ -11,7 +11,7 @@ const RightPage = () => {
         Descoperă semnificațiile martorilor din bordul mașinii tale. Înțelege ce ar trebui să faci 
         și când este nevoie să acționezi de urgență.
       </p>
-      <button onClick={() => navigate("/")}>Înapoi la pagina principală</button>
+      <button onClick={() => navigate("/main")}>Înapoi la pagina principală</button>
     </div>
   );
 };

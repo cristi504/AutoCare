@@ -1,0 +1,137 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .containers {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  thead {
+    background: #00d0c7;
+    color: white;
+  }
+  
+  thead th {
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1em;
+    
+  }
+  
+  tbody tr {
+    transition: background-color 0.3s;
+  }
+  
+  tbody tr:nth-child(even) {
+    background: #f1f1f1;
+  }
+  
+  tbody tr:hover {
+    background: #e6f7f6;
+  }
+  
+  tbody td {
+    padding: 15px;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  /* Button Styling */
+  button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background: #00d0c7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  button:hover {
+    background: #009a92;
+    transform: scale(1.05);
+  }
+  
+  /* Popup Styling */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .popup-content h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .popup-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .save-button {
+    background: #00d0c7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .save-button:hover {
+    background: #009a92;
+    transform: scale(1.05);
+  }
+  
+  .cancel-button {
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .cancel-button:hover {
+    background: #c62828;
+    transform: scale(1.05);
+  }

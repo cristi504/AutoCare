@@ -7,7 +7,7 @@ const MainGrid = () => {
   const navigate = useNavigate();
   return (
     <div className="main-grid">
-      <button onClick={() => navigate("/service-intervals")}>INTERVALE SERVICE</button>
+      <button onClick={() => navigate("/service-intervals")}>INTRARI SERVICE</button>
       <button onClick={() => navigate("/documents")}>DOCUMENTE</button>
       <button onClick={() => navigate("/preventive-maintenance")}>INTRETINERE PREVENTIVA</button>
       <button onClick={() => navigate("/technical-issues")}>PROBLEME TEHNICE</button>
