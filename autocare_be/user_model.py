@@ -82,6 +82,18 @@ class UserModel:
         result = self.collection.update_one(
             {"_id": ObjectId(user_id)},
             {"$push": {"documents": document}}
-      )
+        )
         if result.matched_count == 0:
-              raise Exception("User not found")
+             raise Exception("User not found")
+    def delete_user_document(self,user_id, doc_id):
+        try:
+            result = self.collection.update_one(
+                 {"_id": ObjectId(user_id)},
+                 {"$pull": {"documents": {"doc_id": doc_id}}}  # Remove document from the 'documents' array
+             )
+            return result.modified_count > 0
+        except Exception as e:
+             print(f"Error deleting document: {e}")
+             return False
+    
+        

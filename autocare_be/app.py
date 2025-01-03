@@ -132,7 +132,9 @@ def fetch_user_documents(user_id):
 def add_document(user_id):
     try:
         data = request.json
+        doc_id =generate_random_string(10)
         document = {
+            "doc_id":doc_id,
             "type": data.get("type"),
             "issue_date": data.get("issue_date"),
             "expiry_date": data.get("expiry_date"),
@@ -141,6 +143,16 @@ def add_document(user_id):
         return jsonify({'message': 'Document added successfully'}), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@app.route('/users/<user_id>/documents/<doc_id>', methods=['DELETE'])
+def delete_document(user_id, doc_id):
+    result = user_model.delete_user_document(user_id, doc_id)  # Call the user_model function
+    if result:
+        return jsonify({"message": "Document deleted successfully."}), 200
+    else:
+        return jsonify({"error": "Failed to delete the document or document not found."}), 404
+
+    
    
 if __name__ == '__main__':
     app.run(debug=True)
