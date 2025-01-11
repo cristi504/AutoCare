@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class UserModel:
     def __init__(self, db):
-        self.collection = db['users']  # Replace with your users collection name
+        self.collection = db['users']  
 
     def add_car(self, user_id, brand, model, year,vin,enginecapacity,power,carID):
         """Add a car to a user's account."""
@@ -30,7 +30,7 @@ class UserModel:
     #     return "Service added successfully"
 
     def add_service(self, user_id, car_ID, date, km, service, description):
-    # """Add a service entry to a car."""
+   
          print("User ID:", user_id)
          print("Car ID:", car_ID)   
          service_entry = {"date": date, "km": km, "service": service, "description": description}
