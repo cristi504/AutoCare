@@ -31,15 +31,15 @@ class UserModel:
 
     def add_service(self, user_id, car_ID, date, km, service, description):
     # """Add a service entry to a car."""
-         print("User ID:", user_id)  # Debug log
-         print("Car ID:", car_ID)    # Debug log
+         print("User ID:", user_id)
+         print("Car ID:", car_ID)   
          service_entry = {"date": date, "km": km, "service": service, "description": description}
          query = {
              "_id": ObjectId(user_id),
              "cars.carID": car_ID  # Match car by unique identifier
                 }
-         print("Query:", query)  # Debug log
-         update = {"$push": {"cars.$.services": service_entry}}  # Use `$` to target matched car
+         print("Query:", query) 
+         update = {"$push": {"cars.$.services": service_entry}}  
          result = self.collection.update_one(query, update)
 
          if result.matched_count == 0:

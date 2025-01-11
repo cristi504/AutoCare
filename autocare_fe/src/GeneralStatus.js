@@ -11,7 +11,7 @@ const GeneralStatus = () => {
   const [newCar, setNewCar] = useState({ brand: "", model: "", year: "" , vin:"" , enginecapacity: "", power:"" });
   const [error, setError] = useState(''); 
   const [cars, setCars] = useState([
-    { brand: " ", model: " ", year:'' , vin: " " }]);
+    { brand: " ", model: " ", year:'' , vin: " ", enginecapacity:"", power:""  }]);
  
     useEffect(() => {
       // Fetch the project entries from the API
@@ -24,7 +24,7 @@ const GeneralStatus = () => {
             }
             else
             {
-              console.log("Yolo cars = ", data.cars)
+             // console.log("Yolo cars = ", data.cars)
               setCars(data.cars);
             }
               
@@ -42,7 +42,7 @@ const GeneralStatus = () => {
       setCars([...cars, { ...newCar}]);
       setShowPopup(false);
       await addCarHandler(newCar.brand,newCar.model,newCar.year,newCar.vin,newCar.enginecapacity,newCar.power)
-      setNewCar({ brand: "", model: "", year: "" ,vin:"", enginecapacity:"" , power:""}); // Reset the form
+      setNewCar({ brand: "", model: "", year: "" ,vin:"", enginecapacity:"" , power:""}); // Reset the "form"
     } else {
       alert("Please fill out all fields!");
     }
@@ -74,16 +74,9 @@ const GeneralStatus = () => {
     }
   }
   
-
   // const cars = [
   //   { brand: "Toyota", model: "Corolla", year: 2020, vin: "1HGBH41JXMN109186" },
   //   { brand: "Ford", model: "Mustang", year: 2018, vin: "1FAFP4041XF108632" },
-  //   { brand: "Honda", model: "Civic", year: 2022, vin: "19XFC2F59GE227615" },
-  //   { brand: "Chevrolet", model: "Camaro", year: 2019, vin: "2G1FB1E35F9202323" },
-  //   { brand: "Tesla", model: "Model 3", year: 2021, vin: "5YJ3E1EA7LF789012" },
-  //   { brand: "BMW", model: "X5", year: 2017, vin: "WBAKS8C59ED123456" },
-  //   { brand: "Audi", model: "A4", year: 2016, vin: "WAUFFAFL7GN123456" },
-  //   { brand: "Mercedes-Benz", model: "C-Class", year: 2023, vin: "WDDGF81X123456789" },
   // ];
   return (
     <div className="containers">
@@ -152,7 +145,7 @@ const GeneralStatus = () => {
               value={newCar.enginecapacity}
               onChange={handleInputChange}
             />
-             <input
+             <input 
               type="number"
               name="power"
               placeholder="Power"
