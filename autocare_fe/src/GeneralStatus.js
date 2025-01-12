@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import './generalStatus.css';
 
 const GeneralStatus = () => {
-  const user_id = localStorage.getItem("user_id");
+  const user_id = localStorage.getItem("user_id"); //store in localStorate the user_id
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const [newCar, setNewCar] = useState({ brand: "", model: "", year: "" , vin:"" , enginecapacity: "", power:"" });
@@ -14,8 +14,7 @@ const GeneralStatus = () => {
     { brand: " ", model: " ", year:'' , vin: " ", enginecapacity:"", power:""  }]);
  
     useEffect(() => {
-      // Fetch the project entries from the API
-      fetch(`http://localhost:5000/users/${user_id}/cars`)
+      fetch(`http://localhost:5000/users/${user_id}/cars`)  //load data,this function is called when page is loaded
           .then((res) => res.json())
           .then((data) => {
             if(data.cars == undefined) 
@@ -24,8 +23,8 @@ const GeneralStatus = () => {
             }
             else
             {
-             // console.log("Yolo cars = ", data.cars)
-              setCars(data.cars);
+             // console.log("Yolo cars = ", data.cars)   //for debbuging
+              setCars(data.cars); //put the data loaded in the table(page)
             }
               
               
@@ -33,16 +32,16 @@ const GeneralStatus = () => {
   }, [user_id]);
 
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) => {  //at every key press in the input it gets updated
     const { name, value } = e.target;
-    setNewCar({ ...newCar, [name]: value });
+    setNewCar({ ...newCar, [name]: value }); 
   };
   const  handleAddCar = async () => {
     if (newCar.brand && newCar.model && newCar.year &&newCar.vin &&newCar.enginecapacity&&newCar.power) {
-      setCars([...cars, { ...newCar}]);
-      setShowPopup(false);
-      await addCarHandler(newCar.brand,newCar.model,newCar.year,newCar.vin,newCar.enginecapacity,newCar.power)
-      setNewCar({ brand: "", model: "", year: "" ,vin:"", enginecapacity:"" , power:""}); // Reset the "form"
+      setCars([...cars, { ...newCar}]); //update the cars array with the new one
+      setShowPopup(false); //close the popup
+      await addCarHandler(newCar.brand,newCar.model,newCar.year,newCar.vin,newCar.enginecapacity,newCar.power) //calls the function to send data to the backend
+      setNewCar({ brand: "", model: "", year: "" ,vin:"", enginecapacity:"" , power:""}); //reset the "form"
     } else {
       alert("Please fill out all fields!");
     }
@@ -52,11 +51,11 @@ const GeneralStatus = () => {
     setError('');
 
     try{
-        const user_id = localStorage.getItem("user_id");
+        const user_id = localStorage.getItem("user_id"); // get the user_id
         const response = await fetch(`http://localhost:5000/users/${user_id}/cars`,{
           method :'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({brand,model,year,vin,enginecapacity,power}),
+          body: JSON.stringify({brand,model,year,vin,enginecapacity,power}), //this body is sent to the API
         });
 
         const data=  await response.json();

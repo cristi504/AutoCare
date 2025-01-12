@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import './serviceIntervals.css';
 const ServiceIntervals = () => {
-  const user_id = localStorage.getItem("user_id");
+  const user_id = localStorage.getItem("user_id"); //store the user_id in the localStorage
   const navigate = useNavigate();
-
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState([]); 
   const [serverData, setServerData] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedCar, setSelectedCar] = useState(null); // Store the selected car
@@ -17,14 +16,14 @@ const ServiceIntervals = () => {
 
   const handleChange = (event) => {
     const selectedBrand = event.target.value;
-    setSelectedOption(selectedBrand);
+    setSelectedOption(selectedBrand); //this function works with the dropdown
 
     const car = serverData.find((e) => e.brand === selectedBrand);
     setSelectedCar(car); 
-    setServiceEntries(car?.services || []);
+    setServiceEntries(car?.services || []); //if we don t have data , set it empty
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) => { //at every input chande, update the data
     const { name, value } = e.target;
     setServiceEntry({ ...newServiceEntry, [name]: value });
   };
@@ -35,15 +34,15 @@ const ServiceIntervals = () => {
       return;
     }
 
-    const user_id = localStorage.getItem("user_id");
-    const car_ID = selectedCar.carID;
-    console.log("Car ID:", car_ID); 
+    const user_id = localStorage.getItem("user_id"); //get the user_id
+    const car_ID = selectedCar.carID;//store the carID
+    console.log("Car ID:", car_ID); //for debbuging
 
     try {
       const response = await fetch(`http://localhost:5000/users/${user_id}/cars/${car_ID}/services`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({date, km, service, description }),
+        body: JSON.stringify({date, km, service, description }),//this body is sent to the API
       });
 
       const data = await response.json();
@@ -60,22 +59,22 @@ const ServiceIntervals = () => {
 
   const handleAddService = async () => {
     if (newServiceEntry.date && newServiceEntry.km && newServiceEntry.service && newServiceEntry.description) {
-      await addCarHandler(newServiceEntry.date, newServiceEntry.km, newServiceEntry.service, newServiceEntry.description);
-      setServiceEntry({ date: "", km: "", service: "", description: "" }); 
-      setShowPopup(false);
+      await addCarHandler(newServiceEntry.date, newServiceEntry.km, newServiceEntry.service, newServiceEntry.description); //calls the function above to add a new service entry
+      setServiceEntry({ date: "", km: "", service: "", description: "" }); //reset the fields
+      setShowPopup(false); //close the popup
     } else {
       alert("Please fill out all fields!");
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { //this is called when page is loaded to load the data from API
     fetch(`http://localhost:5000/users/${user_id}/cars`)
       .then((res) => res.json())
       .then((data) => {
-        setOptions(data.cars.map((e) => e.brand));
+        setOptions(data.cars.map((e) => e.brand)); //in the dropdown we can select the brand of the car 
         setServerData(data.cars);
-        setSelectedCar(data.cars[0]);
-        setServiceEntries(data.cars[0]?.services || []);
+        setSelectedCar(data.cars[0]); //first service entry shown is for the first car selected
+        setServiceEntries(data.cars[0]?.services || []); //if we don t have data for the first car, then it s empty
       });
   }, [user_id]);
 

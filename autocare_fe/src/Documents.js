@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import './generalStatus.css';
 
 const Documents = () => {
-  const user_id = localStorage.getItem("user_id");
+  const user_id = localStorage.getItem("user_id"); //get the user_id from database and store it in localStorage
   const navigate = useNavigate();
   const [documents, setDocuments] = useState([]);
   const [newDocument, setNewDocument] = useState({
@@ -12,30 +12,31 @@ const Documents = () => {
     issue_date: "",
     expiry_date: "",
   });
-  const [showPopup, setShowPopup] = useState(false);
-  const [selectedDocument, setSelectedDocument] = useState(null); // Track selected document
+  const [showPopup, setShowPopup] = useState(false); 
+  const [selectedDocument, setSelectedDocument] = useState(null); //track selected document
 
 
-  useEffect(() => {
-    // Fetch the project entries from the API
+  useEffect(() => {  // this function is called when page is loaded
+    //fetch the project entries from the API
     fetch(`http://localhost:5000/users/${user_id}/cars`)
-      .then((res) => res.json())
+      .then((res) => res.json())   //res is converted in json
       .then((data) => {
         if (data.documents == undefined) {
-          setDocuments([]);
+          setDocuments([]);  //set the documents empty array if we don t have data
         }
         else {
-          console.log("Yolo cars = ", data.documents)
-          setDocuments(data.documents);
+          //console.log("Yolo docs = ", data.documents)
+          setDocuments(data.documents);  //set the documents with the fetched data
         }
 
 
       });
   }, [user_id]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) => {  //e is a event object
     setNewDocument({ ...newDocument, [e.target.name]: e.target.value });
   };
+//the { ...newDocument } part creates a shallow copy of the newDocument object to ensure that the original state is not modified
 
 
   const handleAddDocument = async () => {
@@ -44,12 +45,12 @@ const Documents = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newDocument),
+      body: JSON.stringify(newDocument), //that s the body that is sent to api
     });
     const result = await response.json();
     if (response.ok) {
-      setDocuments([...documents, newDocument]);
-      setShowPopup(false);
+      setDocuments([...documents, newDocument]); //update documents with the new value added
+      setShowPopup(false); //close the popup after add
     } else {
       console.error("Failed to add document:", result.error);
     }
@@ -68,8 +69,8 @@ const Documents = () => {
       .then((data) => {
         if (data.message) {
           alert(data.message);
-          setDocuments(documents.filter((doc) => doc.doc_id !== selectedDocument)); // Update the list
-          setSelectedDocument(null); // Reset selection
+          setDocuments(documents.filter((doc) => doc.doc_id !== selectedDocument)); //update the list
+          setSelectedDocument(null); //reset selection
         } else {
           console.error("Failed to delete document:", data.error);
         }
