@@ -1,3 +1,3 @@
 {
-    "database_url": "test-db.ob40w.mongodb.net/?retryWrites=true&w=majority&appName=test-db"
+    "database_url": "your_database_url"
 }
